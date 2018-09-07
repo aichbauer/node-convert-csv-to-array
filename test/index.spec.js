@@ -1,4 +1,4 @@
-import { convertCSVToArray } from '../lib';
+import { convertCSVToArray } from '../src';
 
 import { dataHeaderCommaSeparated } from './fixtures/data';
 import {

@@ -1,4 +1,4 @@
-import { convertCSVToArrayOfArrays } from '../../lib/modules/convert-csv-to-array-of-arrays';
+import { convertCSVToArrayOfArrays } from '../../src/modules/convert-csv-to-array-of-arrays';
 
 import {
   dataHeaderSemicolonSeparated,

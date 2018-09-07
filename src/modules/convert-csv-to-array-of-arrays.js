@@ -10,10 +10,10 @@ export const convertCSVToArrayOfArrays = (data, { header, separator }) => {
     const values = row.split(separator);
     const checkedAndConvertedValues = [];
     if (
-      rows.length - 1 !== idx &&
-      (
-        (!header && idx !== 0) ||
-        header
+      rows.length - 1 !== idx
+      && (
+        (!header && idx !== 0)
+        || header
       )
     ) {
       values.forEach((value) => {
