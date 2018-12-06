@@ -3,7 +3,9 @@ import { convertCSVToArray } from '../src';
 import { dataHeaderCommaSeparated } from './fixtures/data';
 import {
   expectedResultObjectHeader,
+  expectedResultObjectWithoutHeader,
   expectedResultArrayHeader,
+  expectedResultArrayWithoutHeader
 } from './fixtures/expected-results';
 
 test('convertCSVToArray | convert csv to array of objects', () => {
@@ -12,10 +14,22 @@ test('convertCSVToArray | convert csv to array of objects', () => {
   expect(result).toEqual(expectedResultObjectHeader);
 });
 
+test('convertCSVToArray | convert csv to array of objects without header', () => {
+  const result = convertCSVToArray(dataHeaderCommaSeparated, { header: false });
+
+  expect(result).toEqual(expectedResultObjectWithoutHeader);
+});
+
 test('convertCSVToArray | convert csv to array of arrays', () => {
   const result = convertCSVToArray(dataHeaderCommaSeparated, { type: 'array' });
 
   expect(result).toEqual(expectedResultArrayHeader);
+});
+
+test('convertCSVToArray | convert csv to array of arrays without header', () => {
+  const result = convertCSVToArray(dataHeaderCommaSeparated, { header: false, type: 'array' });
+
+  expect(result).toEqual(expectedResultArrayWithoutHeader);
 });
 
 test('wrong data', () => {

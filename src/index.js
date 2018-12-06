@@ -4,7 +4,7 @@ import { convertCSVToArrayOfObjects } from './modules/convert-csv-to-array-of-ob
 
 export const convertCSVToArray = (data, { header, type, separator } = {}) => {
   const thisOptions = {
-    header: header || true,
+    header: header !== false,
     type: type || 'object',
     separator: separator || ',',
   };
