@@ -14,6 +14,12 @@ test('convertCSVToArray | convert csv to array of objects', () => {
   expect(result).toEqual(expectedResultObjectHeader);
 });
 
+test('convertCSVToArray | convert csv to array of objects with header option explicitly true', () => {
+  const result = convertCSVToArray(dataHeaderCommaSeparated, { header: true });
+
+  expect(result).toEqual(expectedResultObjectHeader);
+});
+
 test('convertCSVToArray | convert csv to array of objects without header', () => {
   const result = convertCSVToArray(dataHeaderCommaSeparated, { header: false });
 
@@ -22,6 +28,12 @@ test('convertCSVToArray | convert csv to array of objects without header', () =>
 
 test('convertCSVToArray | convert csv to array of arrays', () => {
   const result = convertCSVToArray(dataHeaderCommaSeparated, { type: 'array' });
+
+  expect(result).toEqual(expectedResultArrayHeader);
+});
+
+test('convertCSVToArray | convert csv to array of arrays with header option explicitly true', () => {
+  const result = convertCSVToArray(dataHeaderCommaSeparated, { header: true, type: 'array' });
 
   expect(result).toEqual(expectedResultArrayHeader);
 });
