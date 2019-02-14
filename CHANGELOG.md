@@ -1,3 +1,7 @@
+1.0.3 - February, 14 2019
+
+* 4c96ab0 Fix: handle line breaks in values correct (#4) (Lukas Aichbauer)
+
 1.0.2 - December, 24 2018
 
 * 55b9edb Fix: header option checking (closes #2) (#3) (yitomok)

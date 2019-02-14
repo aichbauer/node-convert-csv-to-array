@@ -1,6 +1,6 @@
 {
   "name": "convert-csv-to-array",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert a csv formatted string to an array",
   "main": "./lib/index.js",
   "repository": "https://www.github.com/aichbauer/node-convert-csv-to-array",
