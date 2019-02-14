@@ -2,7 +2,7 @@ import { convertStringToNumber } from 'convert-string-to-number';
 
 export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
   const csv = data;
-  const rows = csv.split('\n');
+  const rows = csv.split(/(?!\B"[^"]*)\n(?![^"]*"\B)/g);
   const array = [];
 
   let headerRow;
