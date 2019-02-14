@@ -3,10 +3,12 @@ import { convertCSVToArrayOfObjects } from '../../src/modules/convert-csv-to-arr
 import {
   dataHeaderSemicolonSeparated,
   dataHeaderTabSeparated,
+  dataWithMultilineEntries,
 } from '../fixtures/data';
 import {
   expectedResultObjectHeader,
   expectedResultObjectWithoutHeader,
+  expectedResultObjectMultiline,
 } from '../fixtures/expected-results';
 
 test('convertCSVToArrayOfObjects | with header and semicolon separated', () => {
@@ -31,4 +33,10 @@ test('convertCSVToArrayOfObjects | without header and tab separated', () => {
   const result = convertCSVToArrayOfObjects(dataHeaderTabSeparated, { header: false, separator: '\t' });
 
   expect(result).toEqual(expectedResultObjectWithoutHeader);
+});
+
+test('convertCSVToArrayOfObjects | line break in value', () => {
+  const result = convertCSVToArrayOfObjects(dataWithMultilineEntries, { header: false, separator: ';' });
+
+  expect(result).toEqual(expectedResultObjectMultiline);
 });

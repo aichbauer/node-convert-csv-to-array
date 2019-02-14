@@ -3,8 +3,7 @@ import { convertStringToNumber } from 'convert-string-to-number';
 export const convertCSVToArrayOfArrays = (data, { header, separator }) => {
   const csv = data;
   const array = [];
-
-  const rows = csv.split('\n');
+  const rows = csv.split(/(?!\B"[^"]*)\n(?![^"]*"\B)/g);
 
   rows.forEach((row, idx) => {
     const values = row.split(separator);
