@@ -4,11 +4,13 @@ import {
   dataHeaderSemicolonSeparated,
   dataHeaderTabSeparated,
   dataWithMultilineEntries,
+  dataWithEscapedSeparators,
 } from '../fixtures/data';
 import {
   expectedResultObjectHeader,
   expectedResultObjectWithoutHeader,
   expectedResultObjectMultiline,
+  expectedResultObjectEscapedSeparator,
 } from '../fixtures/expected-results';
 
 test('convertCSVToArrayOfObjects | with header and semicolon separated', () => {
@@ -39,4 +41,10 @@ test('convertCSVToArrayOfObjects | line break in value', () => {
   const result = convertCSVToArrayOfObjects(dataWithMultilineEntries, { header: false, separator: ';' });
 
   expect(result).toEqual(expectedResultObjectMultiline);
+});
+
+test('convertCSVToArrayOfObjects | escaped separator', () => {
+  const result = convertCSVToArrayOfObjects(dataWithEscapedSeparators, { header: false, separator: ',' });
+
+  expect(result).toEqual(expectedResultObjectEscapedSeparator);
 });

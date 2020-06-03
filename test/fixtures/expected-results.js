@@ -57,6 +57,20 @@ Bird"`,
   },
 ];
 
+
+const escapedSeparatorArray = [
+  ['withSeparator', 'withoutSeparator'],
+  ['1,2,3', 1],
+  ['a,b,c,d', 5],
+  ['tersiniearsn,riotesaetn', 6],
+];
+
+const escapedSeparatorObject = [
+  { withSeparator: '1,2,3', withoutSeparator: 1 },
+  { withSeparator: 'a,b,c,d', withoutSeparator: 5 },
+  { withSeparator: 'tersiniearsn,riotesaetn', withoutSeparator: 6 },
+];
+
 export const expectedResultArrayHeader = [
   arrayHeader,
   ...arrayContent,
@@ -74,3 +88,7 @@ export const expectedResultObjectWithoutHeader = objectContent;
 export const expectedResultArrayMultiline = arrayContentMultiline;
 
 export const expectedResultObjectMultiline = objectContentMultiline;
+
+export const expectedResultArrayEscapedSeparator = escapedSeparatorArray;
+
+export const expectedResultObjectEscapedSeparator = escapedSeparatorObject;

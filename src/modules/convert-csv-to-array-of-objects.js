@@ -1,4 +1,5 @@
 import { convertStringToNumber } from 'convert-string-to-number';
+import { splitRow } from '../helpers/split-row';
 
 export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
   const csv = data;
@@ -11,7 +12,7 @@ export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
 
   rows.forEach((row, idx) => {
     if (idx === 0) {
-      headerRow = row.split(separator);
+      headerRow = splitRow(row, separator);
       if (header) {
         array.push(headerRow);
       }
@@ -21,7 +22,7 @@ export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
         });
       });
     } else if (rows.length - 1 !== idx) {
-      const values = row.split(separator);
+      const values = splitRow(row, separator);
 
       values.forEach((value, i) => {
         const convertedToNumber = convertStringToNumber(value);

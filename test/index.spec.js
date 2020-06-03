@@ -5,7 +5,7 @@ import {
   expectedResultObjectHeader,
   expectedResultObjectWithoutHeader,
   expectedResultArrayHeader,
-  expectedResultArrayWithoutHeader
+  expectedResultArrayWithoutHeader,
 } from './fixtures/expected-results';
 
 test('convertCSVToArray | convert csv to array of objects', () => {

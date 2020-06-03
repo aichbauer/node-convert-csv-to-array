@@ -1,4 +1,5 @@
 import { convertStringToNumber } from 'convert-string-to-number';
+import { splitRow } from '../helpers/split-row';
 
 export const convertCSVToArrayOfArrays = (data, { header, separator }) => {
   const csv = data;
@@ -6,7 +7,7 @@ export const convertCSVToArrayOfArrays = (data, { header, separator }) => {
   const rows = csv.split(/(?!\B"[^"]*)\n(?![^"]*"\B)/g);
 
   rows.forEach((row, idx) => {
-    const values = row.split(separator);
+    const values = splitRow(row, separator);
     const checkedAndConvertedValues = [];
     if (
       rows.length - 1 !== idx
