@@ -1,5 +1,3 @@
-import { convertStringToNumber } from 'convert-string-to-number';
-
 export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
   const csv = data;
   const rows = csv.split(/(?!\B"[^"]*)\n(?![^"]*"\B)/g);
@@ -10,7 +8,12 @@ export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
   const content = [];
 
   rows.forEach((row, idx) => {
-    if (idx === 0) {
+    row = row.trim();
+    
+    if (row.length === 0) {
+      return;
+    }
+    if (!headerRow && !headerObj) {
       headerRow = row.split(separator);
       if (header) {
         array.push(headerRow);
@@ -24,8 +27,7 @@ export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
       const values = row.split(separator);
 
       values.forEach((value, i) => {
-        const convertedToNumber = convertStringToNumber(value);
-        const thisValue = Number.isNaN(convertedToNumber) ? value : convertedToNumber;
+        const thisValue = Number.isNaN(Number(value)) ? value : Number(value);
         headerObj = Object.assign({}, headerObj, {
           [headerRow[i]]: thisValue,
         });
