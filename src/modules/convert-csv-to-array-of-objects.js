@@ -3,6 +3,9 @@ import { convertStringToNumber } from 'convert-string-to-number';
 export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
   const csv = data;
   const rows = csv.split(/(?!\B"[^"]*)\n(?![^"]*"\B)/g);
+  // remove the empty array that will be present at the end of rows if the input ended in a newline
+  if (csv.slice(-1) === '\n') rows.pop();
+
   const array = [];
 
   let headerRow;
@@ -20,7 +23,7 @@ export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
           [headerItem]: undefined,
         });
       });
-    } else if (rows.length - 1 !== idx) {
+    } else {
       const values = row.split(separator);
 
       values.forEach((value, i) => {
