@@ -4,6 +4,7 @@ import {
   dataHeaderSemicolonSeparated,
   dataHeaderTabSeparated,
   dataWithMultilineEntries,
+  dataNotEndingInNewline
 } from '../fixtures/data';
 import {
   expectedResultObjectHeader,
@@ -39,4 +40,10 @@ test('convertCSVToArrayOfObjects | line break in value', () => {
   const result = convertCSVToArrayOfObjects(dataWithMultilineEntries, { header: false, separator: ';' });
 
   expect(result).toEqual(expectedResultObjectMultiline);
+});
+
+test('convertCSVToArrayOfObjects | no ending newline in input', () => {
+  const result = convertCSVToArrayOfObjects(dataNotEndingInNewline, {header: true, separator: ','});
+
+  expect(result).toEqual(expectedResultObjectHeader);
 });
